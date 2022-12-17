@@ -10,20 +10,16 @@ if __name__ == '__main__':
     nltk.download('punkt')
     nltk.download('stopwords')
 
-    st.header("Text Summarization using TF-IDF and WordFrequency Algorithms")
-    st.subheader("This app will summarize the long piece of input text in a few sentences")
+    st.header("Legal Text Summarization")
+    st.subheader("This app will summarize the long legal judgements to provide meaningful insights in order to speed up the legal process per case")
 
-    st.subheader("Paste your long text below:")
-    text = st.text_area(label="Input text")
+   st.sidebar.markdown(""" # **Step 1: Upload File**""")
+   text=st.sidebar.file_uploader(label="",type="txt")
     if st.button("Summarize"):
         if text:
             summary_result = run_summarization_tf_idf(text)
-            st.subheader("Using TF-IDF Algorithm:")
-            st.success(summary_result)
-
-            summary_result = run_summarization_wf(text)
-            st.subheader("Using WordFrequency Algorithm:")
+            st.subheader("LEGAL SUMMARY")
             st.success(summary_result)
         else:
-            st.error("Please paste or write(!) some text")
+            st.error("Please Input .txt file for summarization")
 
